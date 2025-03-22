@@ -1,0 +1,35 @@
+.parent_container {
+  text-align: center;
+}
+.parent_container h1 {
+  padding: 50px;
+}
+.movies_container {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  padding: 10px 40px 40px 40px;
+}
+.movie_card {
+  position: relative;
+  margin: 0;
+}
+.movie_card img {
+  height: 400px;
+  width: 350px;
+  border-radius: 20px;
+  object-fit: cover;
+}
+.movie_card p {
+  position: absolute;
+  background-color: #140e22;
+  font-size: 1.5rem;
+  padding: 10px;
+  width: 100%;
+  bottom: 0;
+  margin: 0;
+  color: white;
+  text-align: center;
+  border-radius: 0 0 20px 20px;
+  font-family: "Poppins", sans-serif;
+}

@@ -1,0 +1,29 @@
+.nav {
+  background-color: #140e22;
+  display: flex;
+  padding: 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+.left_items {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+.left_items h1 {
+  color: white;
+  font-size: 1.5rem;
+  font-family: "Roboto", sans-serif;
+}
+.left_items img {
+  height: 40px;
+  width: 40px;
+}
+.right_items {
+  display: flex;
+  gap: 15px;
+}
+.icon {
+  color: white;
+  font-size: 1.5rem;
+}
