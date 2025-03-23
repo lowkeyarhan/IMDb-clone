@@ -8,7 +8,7 @@ function Movies() {
   const [totalPages, setTotalPages] = useState(0);
 
   // API constants
-  const API_KEY = "9179ed80b89b30c42367184efbe93419";
+  const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
   const BASE_URL = "https://api.themoviedb.org/3";
   const IMAGE_BASE_URL = "https://image.tmdb.org/t/p";
   const POSTER_SIZE = "/w500";
@@ -22,7 +22,7 @@ function Movies() {
   // Format the date to a more readable format
   const formatDate = (dateString) => {
     if (!dateString) return "Unknown";
-    const options = { year: 'numeric', month: 'short', day: 'numeric' };
+    const options = { year: "numeric", month: "short", day: "numeric" };
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
@@ -64,10 +64,12 @@ function Movies() {
               <h3>{movie.title}</h3>
               <div className="movie_details">
                 <span className="release_date">
-                  <i className="release_icon">📅</i> {formatDate(movie.release_date)}
+                  <i className="release_icon">📅</i>{" "}
+                  {formatDate(movie.release_date)}
                 </span>
                 <span className="rating">
-                  <i className="rating_icon">⭐</i> {movie.vote_average.toFixed(1)}/10
+                  <i className="rating_icon">⭐</i>{" "}
+                  {movie.vote_average.toFixed(1)}/10
                 </span>
               </div>
             </div>

@@ -6,7 +6,7 @@ function Banner() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   // API constants
-  const API_KEY = "9179ed80b89b30c42367184efbe93419";
+  const API_KEY = import.meta.env.VITE_TMDB_API_KEY; // Use environment variable
   const BASE_URL = "https://api.themoviedb.org/3";
   const IMAGE_BASE_URL = "https://image.tmdb.org/t/p";
   const BACKDROP_SIZE = "/w1280";

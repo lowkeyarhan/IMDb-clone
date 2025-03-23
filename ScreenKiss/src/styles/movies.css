@@ -14,7 +14,7 @@
   display: inline-block;
 }
 
-.parent_container h1::after {
+/* .parent_container h1::after {
   content: "";
   position: absolute;
   width: 50px;
@@ -23,7 +23,7 @@
   bottom: 35px;
   left: 50%;
   transform: translateX(-50%);
-}
+} */
 
 .movies_container {
   display: flex;
