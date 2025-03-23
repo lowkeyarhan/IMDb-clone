@@ -4,6 +4,7 @@
   position: relative;
   height: calc(100vh - 80px); /* Subtract navbar height from viewport height */
   overflow: hidden; /* Prevents any potential scrollbars */
+  box-shadow: inset 0 -100px 120px rgba(20, 14, 34, 0.8); /* Create cinematic vignette effect */
 }
 
 .banner_container img {
@@ -11,43 +12,78 @@
   height: calc(100vh - 80px); /* Subtract navbar height from viewport height */
   display: block;
   object-fit: cover; /* Ensures the image covers the area nicely */
-  transition: opacity 0.5s ease; /* Smooth transition between slides */
+  transition: opacity 0.8s ease, transform 8s ease; /* Slow zoom effect for images */
+  transform-origin: center center;
+  animation: subtle-zoom 20s infinite alternate; /* Subtle zoom animation */
 }
 
-/* Slider dots styling */
+@keyframes subtle-zoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
+}
+
+/* Overlay gradient for better text contrast */
+.banner_container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    0deg,
+    rgba(20, 14, 34, 0.9) 0%,
+    rgba(20, 14, 34, 0.3) 50%,
+    rgba(20, 14, 34, 0.1) 100%
+  );
+  pointer-events: none; /* Allow clicks to pass through */
+}
+
+/* Improved slider dots */
 .slider_dots {
   position: absolute;
-  bottom: 70px; /* Move dots up to make room for title */
+  bottom: 90px;
   width: 100%;
   display: flex;
   justify-content: center;
-  gap: 10px;
-  padding: 10px 0 20px 0px;
+  gap: 12px;
+  padding: 10px 0;
+  z-index: 10; /* Ensure dots are above the gradient overlay */
 }
 
 .dot {
-  width: 12px;
-  height: 12px;
-  background-color: rgba(255, 255, 255, 0.5);
+  width: 10px;
+  height: 10px;
+  background-color: rgba(255, 255, 255, 0.3);
   border-radius: 50%;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy transition */
+  border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .dot.active {
   background-color: white;
-  transform: scale(1.2);
+  transform: scale(1.3);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.7); /* Glowing effect */
 }
 
 .banner_container p {
-  background-color: rgba(0, 0, 0, 0.461);
-  padding: 20px;
-  font-size: 30px;
+  background-color: transparent;
+  padding: 25px 20px;
+  font-size: 2.5rem;
+  font-weight: 700;
   color: white;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Poppins", sans-serif;
   text-align: center;
   position: absolute;
-  bottom: 0; /* Position at the bottom */
+  bottom: 0;
   width: 100%;
   margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Text shadow for better readability */
+  z-index: 10; /* Ensure text is above gradient */
+  letter-spacing: 1px;
 }

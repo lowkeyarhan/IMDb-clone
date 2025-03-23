@@ -1,37 +1,129 @@
 .parent_container {
   text-align: center;
+  background-color: #0a0812; /* Dark background */
+  padding-bottom: 50px;
 }
+
 .parent_container h1 {
-  padding: 50px;
+  padding: 50px 0 30px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  color: white;
+  font-size: 2rem;
+  position: relative;
+  display: inline-block;
 }
+
+.parent_container h1::after {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, #9f5efa, #6a11cb);
+  bottom: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .movies_container {
   display: flex;
-  gap: 40px;
+  gap: 30px;
   flex-wrap: wrap;
-  padding: 10px 40px 40px 40px;
+  padding: 20px 40px 40px;
+  justify-content: center;
 }
+
 .movie_card {
   position: relative;
   margin: 0;
-}
-.movie_card img {
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
   height: 400px;
-  width: 350px;
+  width: 300px;
+}
+
+.movie_card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+}
+
+.movie_card img {
+  height: 100%;
+  width: 100%;
   border-radius: 20px;
   object-fit: cover;
+  transition: transform 0.5s ease;
 }
-.movie_card p {
+
+.movie_card:hover img {
+  transform: scale(1.05);
+}
+
+/* Hide movie info by default */
+.movie_info {
   position: absolute;
-  background-color: #140e22;
-  font-size: 1.5rem;
-  padding: 10px;
-  width: 100%;
   bottom: 0;
-  margin: 0;
-  color: white;
-  text-align: center;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(
+    0deg,
+    rgba(10, 8, 18, 0.95) 0%,
+    rgba(10, 8, 18, 0.7) 70%,
+    transparent 100%
+  );
+  padding: 25px 15px 15px;
+  transform: translateY(100%);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   border-radius: 0 0 20px 20px;
+  opacity: 0;
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* Show movie info on hover */
+.movie_card:hover .movie_info {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.movie_info h3 {
+  color: white;
   font-family: "Poppins", sans-serif;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.movie_details {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.release_date,
+.rating {
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.release_icon,
+.rating_icon {
+  font-style: normal;
+  margin-right: 3px;
+}
+
+.rating {
+  color: #ffd700; /* Gold color for rating */
 }
 
 /* pagination styling */
@@ -39,37 +131,35 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 15px;
-  padding: 20px 0 20px 0;
-  background-color: rgba(0, 0, 0, 0.216);
+  gap: 20px;
+  padding: 30px 0;
 }
 
 .pagination_container div {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #140e22;
+  padding: 10px 25px;
+  background: linear-gradient(135deg, #2c1f49 0%, #140e22 100%);
   color: white;
+  border-radius: 50px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-.pagination_container .navbtn:hover {
-  background-color: #1a1334;
-  transform: scale(1.05);
+.pagination_container div:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(135deg, #3c2a62 0%, #1f142f 100%);
 }
 
 .pgno {
-  font-size: 1.2rem;
   font-weight: bold;
-  font-family: "Poppins", sans-serif;
   min-width: 50px;
-  border-radius: 10px;
-  padding: 10px;
+  font-family: "Poppins", sans-serif;
 }
 
 .navbtn {
-  font-size: 1.2rem;
-  border-radius: 100px;
-  padding: 10px;
+  font-size: 1rem;
 }

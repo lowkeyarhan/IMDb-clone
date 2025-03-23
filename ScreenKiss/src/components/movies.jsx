@@ -19,6 +19,13 @@ function Movies() {
     return `${IMAGE_BASE_URL}${POSTER_SIZE}${path}`;
   };
 
+  // Format the date to a more readable format
+  const formatDate = (dateString) => {
+    if (!dateString) return "Unknown";
+    const options = { year: 'numeric', month: 'short', day: 'numeric' };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  };
+
   useEffect(() => {
     const fetchMovies = async () => {
       try {
@@ -27,7 +34,7 @@ function Movies() {
         );
         const data = await response.json();
         setMovies(data.results);
-        setTotalPages(data.total_pages > 500 ? 500 : data.total_pages); // TMDB limits to 500 pages
+        setTotalPages(data.total_pages > 500 ? 500 : data.total_pages);
       } catch (error) {
         console.error("Error fetching trending movies:", error);
       }
@@ -38,17 +45,32 @@ function Movies() {
 
   const handlePageChange = (newPage) => {
     setPage(newPage);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+
+    // Scroll to the trending section instead of the top of the page
+    const trendingSection = document.getElementById("trending-section");
+    if (trendingSection) {
+      trendingSection.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
     <div className="parent_container">
-      <h1>Trending now</h1>
+      <h1 id="trending-section">Trending now</h1>
       <div className="movies_container">
         {movies.map((movie) => (
           <div className="movie_card" key={movie.id}>
             <img src={getImageUrl(movie.poster_path)} alt={movie.title} />
-            <p className="movie_name">{movie.title}</p>
+            <div className="movie_info">
+              <h3>{movie.title}</h3>
+              <div className="movie_details">
+                <span className="release_date">
+                  <i className="release_icon">📅</i> {formatDate(movie.release_date)}
+                </span>
+                <span className="rating">
+                  <i className="rating_icon">⭐</i> {movie.vote_average.toFixed(1)}/10
+                </span>
+              </div>
+            </div>
           </div>
         ))}
       </div>
