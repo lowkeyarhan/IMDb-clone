@@ -33,3 +33,43 @@
   border-radius: 0 0 20px 20px;
   font-family: "Poppins", sans-serif;
 }
+
+/* pagination styling */
+.pagination_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  padding: 20px 0 20px 0;
+  background-color: rgba(0, 0, 0, 0.216);
+}
+
+.pagination_container div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #140e22;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.pagination_container .navbtn:hover {
+  background-color: #1a1334;
+  transform: scale(1.05);
+}
+
+.pgno {
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-family: "Poppins", sans-serif;
+  min-width: 50px;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.navbtn {
+  font-size: 1.2rem;
+  border-radius: 100px;
+  padding: 10px;
+}
